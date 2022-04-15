@@ -1,0 +1,25 @@
+void  fromend(node* &head,int k)
+{
+    int count=0;
+    node* temp=head;
+    while(temp!=NULL)
+    {
+        count++;
+        temp=temp->next;
+    }
+    int fcount=count-k;
+    node* todelete=head;
+    int it=1;
+    if(count==k)
+	{
+		head = head->next;
+		return;
+	}
+    while(it<fcount)
+    {
+        it++;
+        todelete=todelete->next;
+        
+    }
+    todelete->next=todelete->next->next;
+}
