@@ -1,0 +1,22 @@
+/By hint
+  void floodfill(vector<vector<int>>&v,int sr,int sc,int nrow,int ncol,int color,int newColor)
+        {
+                if(sr<0 || sr>=nrow || sc<0 ||sc>=ncol)
+                        return ;
+                else if(v[sr][sc]!=color)
+                        return ;
+                v[sr][sc]=newColor;
+                floodfill(v,sr-1,sc,nrow,ncol,color,newColor);
+                floodfill(v,sr+1,sc,nrow,ncol,color,newColor);
+                floodfill(v,sr,sc-1,nrow,ncol,color,newColor);
+                floodfill(v,sr,sc+1,nrow,ncol,color,newColor);
+        }
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+            if(newColor==image[sr][sc])
+                    return image;
+             int nrow=image.size();
+            int ncol=image[0].size();
+            int tocolor=image[sr][sc];
+            floodfill(image,sr,sc,nrow,ncol,tocolor,newColor);
+            return image;
+    }
